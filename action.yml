@@ -1,4 +1,4 @@
-name: 'Publish Conda package to Anaconda.org'
+name: 'Publish Conda package to Anaconda.org using custom channels for build'
 description: 'Build and Publish conda package to Anaconda'
 author: 'Andrew Prokhorenkov, modified by Maxime Borry, further modified by Roman Joeres'
 branding:
