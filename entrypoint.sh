@@ -22,7 +22,7 @@ build_package(){
 	for channel in $channels; do
 		build_command+=" -c $channel"
 	done
-	build_command+=" --output-folder . ."
+	build_command+=" --output-folder . --no-test ."
 	echo "Execute command: $build_command"
 	eval "$build_command"
     conda convert -p osx-64 linux-64/*.tar.bz2
