@@ -17,7 +17,13 @@ check_if_meta_yaml_file_exists() {
 }
 
 build_package(){
-    conda build -c conda-forge -c bioconda --output-folder . .
+    build_command = "conda-build -c conda-forge -c bioconda" 
+	for channel in "${INPUT_CHANNELS[@]}"; do
+		build_command += " -c " + channel
+	done
+	build_command += " command--output-folder . ."
+	echo "Execute command: $build_command"
+	eval "$build_command"
     conda convert -p osx-64 linux-64/*.tar.bz2
 }
 
