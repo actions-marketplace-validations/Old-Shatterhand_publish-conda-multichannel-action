@@ -17,8 +17,9 @@ check_if_meta_yaml_file_exists() {
 }
 
 build_package(){
-    build_command = "conda-build -c conda-forge -c bioconda" 
-	for channel in "${INPUT_CHANNELS[@]}"; do
+	channels = $(echo $INPUT_CHANNELS | tr "," "\n")
+    build_command = "conda-build -c conda-forge -c bioconda"
+	for channel in $channels; do
 		build_command += " -c " + channel
 	done
 	build_command += " command--output-folder . ."
