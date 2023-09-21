@@ -20,10 +20,12 @@ build_package(){
 	channels=$(echo $INPUT_CHANNELS | tr "," "\n")
 	versions=$(echo $INPUT_VERSIONS | tr "," "\n")
     
-	build_command="conda-build"
+	build_command="conda-build --variants \"{'python': ["
 	for version in $versions; do
-		build_command+=" --py $version"
+		build_command+="'$version', "
 	done
+	build_command=${build_command::-2}
+	build_command+="]}\""
 	
 	build_command+=" -c conda-forge -c bioconda"
 	for channel in $channels; do
