@@ -30,7 +30,7 @@ build_package(){
 		build_command+=" -c $channel"
 	done
 	
-	build_command+=" --output-folder . ."
+	build_command+=" --output-folder . --no-test ."
 	echo "Execute command: $build_command"
 	eval "$build_command"
     
