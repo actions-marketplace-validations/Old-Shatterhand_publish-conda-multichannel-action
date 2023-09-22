@@ -34,7 +34,7 @@ build_package(){
 	done
 	
 	build_command+=" --output-folder . --no-test "
-	if [ -z "$INPUT_FOLDER" ]
+	if [ -z $INPUT_FOLDER ]
 	then
 		build_command+="."
 	else
@@ -54,6 +54,6 @@ upload_package(){
 }
 
 go_to_build_dir
-check_if_meta_yaml_file_exists
+# check_if_meta_yaml_file_exists
 build_package
 upload_package
