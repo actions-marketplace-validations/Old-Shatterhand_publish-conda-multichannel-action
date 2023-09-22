@@ -20,6 +20,7 @@ build_package(){
 	channels=$(echo $INPUT_CHANNELS | tr "," "\n")
 	versions=$(echo $INPUT_VERSIONS | tr "," "\n")
     
+	# may be replaced by {'python': [$INPUT_VERSIONS]}
 	build_command="conda-build --variants \"{'python': ["
 	for version in $versions; do
 		build_command+="'$version', "
@@ -32,7 +33,14 @@ build_package(){
 		build_command+=" -c $channel"
 	done
 	
-	build_command+=" --output-folder . --no-test ."
+	build_command+=" --output-folder . --no-test "
+	if [ -z "$INPUT_FOLDER" ]
+	then
+		build_command+="."
+	else
+		build_command+="$INPUT_FOLDER"
+	fi
+	
 	echo "Execute command: $build_command"
 	eval "$build_command"
     
