@@ -53,16 +53,17 @@ build_package(){
 }
 
 upload_package(){
-	platforms=$(echo $INPUT_PLATFORMS | tr "," "\n")
+    platforms=$(echo $INPUT_PLATFORMS | tr "," "\n")
 	
     export ANACONDA_API_TOKEN=$INPUT_ANACONDATOKEN
     
-	anaconda upload --label main linux-64/*.tar.bz2
+    anaconda upload --label main linux-64/*.tar.bz2
 	
     for platform in $platforms; do
-		cmd="anaconda upload --label main $platform/*.tar.bz2"
-		echo "Upload command: $cmd"
-		eval cmd
+        cmd="anaconda upload --label main $platform/*.tar.bz2"
+        echo "Upload command: $cmd"
+        eval cmd
+    done
 }
 
 go_to_build_dir
