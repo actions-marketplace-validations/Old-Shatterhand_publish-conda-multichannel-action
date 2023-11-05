@@ -13,9 +13,11 @@ inputs:
   Channels:
     description: 'List of conda channels to include in the building process.'
   Versions:
-    description: 'List of python versions to build on. Shall be given as 26, 38, or 311'
+    description: 'List of python versions to build on. Shall be given as 26, 38, or 311.'
   Folder:
     description: 'Folder to search for the meta.yaml'
+  Platforms:
+    description: 'list of platforms to build package for. Default is linux-64.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
