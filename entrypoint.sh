@@ -22,7 +22,7 @@ build_package(){
 	platforms=$(echo $INPUT_PLATFORMS | tr "," "\n")
     
 	# may be replaced by {'python': [$INPUT_VERSIONS]}
-	build_command="conda-build --variants \"{'python': ["
+	build_command="conda-build -q --variants \"{'python': ["
 	for version in $versions; do
 		build_command+="'$version', "
 	done
@@ -46,7 +46,7 @@ build_package(){
 	eval "$build_command"
     
 	for platform in $platforms; do
-	    cmd="conda convert -p $platform linux-64/*.tar.bz2"
+	    cmd="conda convert -q -p $platform linux-64/*.tar.bz2"
 		echo "Convert command: $cmd"
 		eval cmd
 	done
