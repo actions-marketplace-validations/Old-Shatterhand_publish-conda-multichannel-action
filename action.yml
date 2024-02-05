@@ -17,7 +17,9 @@ inputs:
   Folder:
     description: 'Folder to search for the meta.yaml'
   Platforms:
-    description: 'list of platforms to build package for. Default is linux-64.'
+    description: 'List of platforms to build for. Linux-64 is always in.'
+  UploadOriginal:
+    description: '1 if original build for linux-64 shall be uploaded as well, 0 otherwise.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
