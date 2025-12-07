@@ -4,14 +4,17 @@ author: 'Andrew Prokhorenkov, modified by Maxime Borry, further modified by Roma
 branding:
   icon: 'package'  
   color: 'purple'
-inputs: 
-  subDir:
-    description: 'Sub-directory with conda recipe'
-    default: '.'
+inputs:
   AnacondaToken:
     description: 'Anaconda access Token'
   Channels:
     description: 'List of conda channels to include in the building process.'
+  Versions:
+    description: 'List of python versions to build on. Shall be given as 26, 38, or 311.'
+  Folder:
+    description: 'Folder to search for the meta.yaml'
+  Platforms:
+    description: 'List of platforms to build for. Linux-64 is always in.'
 runs:
   using: 'docker'
   image: 'Dockerfile'

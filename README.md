@@ -17,10 +17,13 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: publish-to-conda
-      uses: maxibor/conda-package-publish-action@v1.1
+      uses: Old-Shatterhand/publish-conda-multichannel-action@v0.0.10
       with:
         subDir: 'conda'
         AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
+        Channels: 'pytorch,rdkit'
+        Versions: '3.8,3.11'
+        Platforms: 'osx-64,win-64'
 ```
 
 ### Example project structure
